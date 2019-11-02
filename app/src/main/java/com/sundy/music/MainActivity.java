@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 status = 3;
                 break;
 
-
         }
         Intent intent = new Intent(MainActivity.this, MusicService.class);
         Bundle bundle = new Bundle();
