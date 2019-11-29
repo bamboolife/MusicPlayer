@@ -1,35 +1,37 @@
 package com.sundy.music;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.sundy.common.base.BaseActivity;
 import com.sundy.music.service.MusicService;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    private Button btnStart, btnStop, btnPause, btnLoop;
+import butterknife.OnClick;
+public class MainActivity extends BaseActivity {
+
+    private final static String TAG = MainActivity.class.getSimpleName();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        btnStart = findViewById(R.id.btn_start);
-        btnPause = findViewById(R.id.btn_pause);
-        btnStop = findViewById(R.id.btn_stop);
-        btnLoop = findViewById(R.id.btn_loop);
-        btnLoop.setOnClickListener(this);
-        btnStop.setOnClickListener(this);
-        btnPause.setOnClickListener(this);
-        btnStart.setOnClickListener(this);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     @Override
-    public void onClick(View v) {
+    protected void initViews(Bundle bundle) {
+        SimpleDateFormat date =
+                new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+        String logDate = date.format(new Date());
+// Applies the date and time to the name of the trace log.
+        // Debug.startMethodTracing("sample-" + logDate);
+    }
+
+    @OnClick({R.id.btn_start, R.id.btn_pause, R.id.btn_stop, R.id.btn_loop})
+    public void musicEvent(View v) {
         int status = 0;
         switch (v.getId()) {
             case R.id.btn_start:
@@ -51,5 +53,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bundle.putInt("status", status);
         intent.putExtras(bundle);
         startService(intent);
+    }
+
+    @OnClick(R.id.button)
+    public void jumpEvent() {
+        Intent intent = new Intent(this, ServiceActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       // Debug.stopMethodTracing();
     }
 }

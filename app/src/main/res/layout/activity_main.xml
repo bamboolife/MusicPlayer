@@ -15,36 +15,44 @@
 
     <Button
         android:id="@+id/btn_start"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:text="开始" />
 
     <Button
         android:id="@+id/btn_stop"
         android:layout_width="wrap_content"
-        android:layout_toEndOf="@+id/btn_start"
-     android:layout_alignBaseline="@id/btn_start"
-        android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/btn_start"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/btn_start"
         android:text="停止" />
 
     <Button
         android:id="@+id/btn_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/btn_stop"
-        android:layout_marginStart="10dp"
         android:layout_alignBaseline="@id/btn_stop"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/btn_stop"
         android:text="暂停" />
+
     <Button
         android:id="@+id/btn_loop"
         android:layout_width="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/btn_pause"
         android:layout_alignBaseline="@id/btn_pause"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/btn_pause"
         android:text="循环" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/btn_start"
+        android:layout_height="wrap_content"
+        android:text="线程保活" />
 </RelativeLayout>

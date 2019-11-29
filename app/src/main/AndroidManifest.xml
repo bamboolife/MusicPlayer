@@ -2,25 +2,79 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sundy.music">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
+        android:name="com.sundy.common.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name=".service.MusicService"
-            android:enabled="true"
-            android:exported="true"></service>
-
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.aty.PlayThemeCustomActivity"></activity>
+        <activity android:name=".ui.aty.ImageWallActivity" />
+        <activity android:name=".ui.aty.TimeSleepActivity" />
+        <activity android:name=".ui.aty.MineActivity" />
+        <activity android:name=".ui.aty.AboutActivity" />
+        <activity android:name=".MusicActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ServiceActivity" />
+
+        <service
+            android:name=".service.WhiteService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":white" />
+        <service
+            android:name=".service.BackgroundService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":bg" />
+        <service
+            android:name=".service.GrayService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":gray" />
+        <service
+            android:name=".service.GrayService$GrayInnerService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":gray" />
+
+        <receiver
+            android:name=".receiver.WakeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.sundy.wake.gray" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.WakeReceiver$WakeNotifyService"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.WakeReceiver$WakeGrayInnerService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name=".service.MusicService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>
