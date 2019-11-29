@@ -45,19 +45,19 @@ public class LeftNavigationController implements NavigationView.OnNavigationItem
                 ARouter.getInstance().build("/music/imagewall").navigation();
                 break;
             case R.id.setting_play_ui://播放界面风格
-                ARouter.getInstance().build("/music/imagewall").navigation();
+                ARouter.getInstance().build("/music/theme").navigation();
                 break;
             case R.id.setting_theme_color_custom://主题颜色定制
-                ARouter.getInstance().build("/music/imagewall").navigation();
+            //    ARouter.getInstance().build("/music/theme").navigation();
                 break;
             case R.id.setting_night_mode://夜间模式
-                ARouter.getInstance().build("/music/imagewall").navigation();
+              //  ARouter.getInstance().build("/music/imagewall").navigation();
                 break;
             case R.id.setting_user_guide://用户指南
-                ARouter.getInstance().build("/music/imagewall").navigation();
+                ARouter.getInstance().build("/music/web").navigation();
                 break;
             case R.id.setting_set:
-                ARouter.getInstance().build("/music/imagewall").navigation();
+                ARouter.getInstance().build("/music/setting").navigation();
                 break;
             case R.id.setting_quit:
 
